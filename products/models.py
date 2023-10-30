@@ -11,11 +11,14 @@ class Category(models.Model):
     updated_at = models.DateTimeField(_('updated at'),auto_now=True)
     
     # to give more attributes to Category
-class Meta:
-    db_table = 'categories'    # if you do not write this, it will be created as default using the name of the app plus "_" plus model name
-    verbase_name=_('Category')   # the name for this model in admin panel
-    verbase_name_plural=_('Categories')
-    
+    class Meta:
+        db_table = 'categories'    # if you do not write this, it will be created as default using the name of the app plus "_" plus model name
+        verbose_name=_('Category')   # the name for this model in admin panel
+        verbose_name_plural=_('Categories')
+        
+    def __str__(self):
+        return self.title
+
     
 
 class Product(models.Model):
